@@ -20,8 +20,9 @@ test("Vault able to store multiple Currency", () => {
 test("Vault able to withdraw correct amount of Currency", () => {
     const v1 = new Vault()
     v1.deposit(new Ruble(9000))
+    v1.deposit(new XRP(1200))
     v1.withdraw(new Ruble(3400))
-    expect(Array.from(v1.store.values()).find(x => x.name === "Ruble").value).toBe(5600);
+    expect(Array.from(v1.store.values()).find(x => x.name === "RUB").value).toBe(5600);
 })
 
 test("Vault throws error on uncorrect withdraw", () => {
@@ -40,7 +41,7 @@ test("Transfer between vaults going successfully", () => {
     v1.transfer(new Ruble(3000), v2)
 
     expect(v2.store.size).toBe(1);
-    expect(Array.from(v1.store.values()).find(x => x.name === "Ruble").value).toBe(3000);
+    expect(Array.from(v1.store.values()).find(x => x.name === "RUB").value).toBe(3000);
 })
 
 test("Transfer with uncorrect amount of Currency throws error", () => {

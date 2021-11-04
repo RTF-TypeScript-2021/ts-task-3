@@ -2,7 +2,7 @@ import { Currency } from "../src/task_1";
 
 
 test('Currency creating successfully', () => {
-    const rubleAbstract = new Currency("ru", 0, 'rub')
+    const rubleAbstract = new Currency("RUB", 0, 'rub')
 
     expect(rubleAbstract).toBeInstanceOf(Currency);
 });
