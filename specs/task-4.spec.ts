@@ -10,12 +10,12 @@ test("Smart", () =>{
 
     const smart = new SmartContract()
     expect(
-         smart.state
+        smart.state
     ).toBe(ContractState.pending);
 
     smart.sender = {id: v1.id};
     smart.receiver = {id: v2.id}
-    smart.value = new XRP (20)
+    smart.value = new XRP(20)
     smart.signAndTransfer();
 
     expect(smart.state).toBe(ContractState.transfer)
