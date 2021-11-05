@@ -7,6 +7,7 @@
  * SmartContract - перевод через блокчейн, задержка 3000мс
  * LogisticContract - перевозка металла, задержка 6000мс
  */
+
 import {Currency, CurrencyType} from "../task_1";
 import {ISecureVaultRequisites, Vault} from "../task_3";
 
