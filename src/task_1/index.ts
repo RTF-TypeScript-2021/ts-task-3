@@ -8,7 +8,18 @@
  */
 
 export class Currency{
+    public name: string
+    public value: number
+    public unit: string
 
+    constructor(name: string, value: number, unit: string){
+        if (value < 0 || name === '' || name === undefined || value === undefined || unit === undefined){
+            throw "error"
+        }
+        this.name = name
+        this.value = value
+        this.unit = unit
+    }
 }
 
 export enum CurrencyType {
