@@ -7,33 +7,30 @@
  * Example new Currency("DOGE", 12.5, "satoshi")
  */
  export enum CurrencyType {
-    RUB = "материальная",
-    DOGE = "крипта",
-    XAU = "золото",
-    USD = "материальная",
-    ETH = "крипта",
-    XRP = "крипта",
+    RUB = "material",
+    DOGE = "metal-deposit",
+    XAU = "металл-депозит",
+    USD = "material",
+    ETH = "cryptocurrency",
+    XRP = "cryptocurrency",
 }
 
 type CurrencyName = keyof typeof CurrencyType;
 
-export class Currency{
+export class Currency {
     private _name: string;
     private _value: number;
     private _unit: string;
     private _type: string;
     constructor (name: string, value: number, unit: string) {
         if(!Object.keys(CurrencyType).includes(name)){
-            throw new Error("поел");
+            throw new Error("Unknown currency type");
         }
-        if (typeof value !== "number" || Number.isNaN(value)) {
-            throw new Error("не та");
-        }
-        if (value < 0) {
-            throw new Error("слишком мал");
+        if (typeof value !== "number" || Number.isNaN(value) || value < 0) {
+            throw new Error("The value must be a number or more then 0");
         }
         if (typeof unit !== "string") {
-            throw new Error("да что ты говоришь моя хорошая");
+            throw new Error("unit must be a string");
         }
         
         this._name = name;
