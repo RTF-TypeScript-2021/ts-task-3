@@ -11,15 +11,106 @@ import { Currency } from "../task_1";
 import { ISecureVaultRequisites } from "../task_3";
 
 export class SmartContract implements IContract{
+    id: number;
+    receiver: ISecureVaultRequisites;
+    sender: ISecureVaultRequisites;
+    state: ContractState;
+    value: Currency;
+
+    constructor() {
+        this.state = ContractState.pending;
+    }
+
+    closeTransfer(): void {
+        this.state = ContractState.close
+    }
+
+    rejectTransfer(): void {
+        this.state = ContractState.rejected
+    }
+
+    signAndTransfer(): void {
+        this.state = ContractState.transfer;
+        setTimeout(this.closeTransfer, 3000);
+
+        // this.state = ContractState.transfer;
+        // try{
+        //     (<Vault> this.sender).withdraw(this.value);
+        //     (<Vault> this.receiver).deposit(this.value);
+        //     setTimeout(this.closeTransfer, 3000);
+        // } catch (e) {
+        //     this.rejectTransfer();
+        // }
+    }
 
 }
 
 export class BankingContract implements IContract{
+    id: number;
+    receiver: ISecureVaultRequisites;
+    sender: ISecureVaultRequisites;
+    state: ContractState;
+    value: Currency;
 
+    constructor() {
+        this.state = ContractState.pending;
+    }
+
+    closeTransfer(): void {
+        this.state = ContractState.close
+    }
+
+    rejectTransfer(): void {
+        this.state = ContractState.rejected
+    }
+
+    signAndTransfer(): void {
+        this.state = ContractState.transfer;
+        this.closeTransfer();
+
+        // this.state = ContractState.transfer;
+        // try{
+        //     this.sender.withdraw(this.value);
+        //     this.receiver.deposit(this.value);
+        //     this.closeTransfer();
+        // } catch (e) {
+        //     this.rejectTransfer();
+        // }
+    }
 }
 
 export class LogisticContract implements IContract{
+    id: number;
+    receiver: ISecureVaultRequisites;
+    sender: ISecureVaultRequisites;
+    state: ContractState;
+    value: Currency;
 
+    constructor() {
+        this.state = ContractState.pending;
+    }
+
+    closeTransfer(): void {
+        this.state = ContractState.close
+    }
+
+    rejectTransfer(): void {
+        this.state = ContractState.rejected
+    }
+
+    signAndTransfer(): void {
+        this.state = ContractState.transfer;
+        setTimeout(this.closeTransfer, 6000);
+
+        // this.state = ContractState.transfer;
+        // try{
+        //     this.sender.withdraw(this.value);
+        //     this.receiver.deposit(this.value);
+        //     setTimeout(this.closeTransfer, 6000);
+        // } catch (e) {
+        //     this.rejectTransfer();
+        // }
+    }
 }
 
 
