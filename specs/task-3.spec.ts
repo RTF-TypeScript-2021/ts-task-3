@@ -1,5 +1,6 @@
 import { Vault } from "../src/task_3";
 import { Dollar, Ruble, XRP } from "../src/task_2";
+import { Currency } from "../src/task_1";
 
 test("Vault instance successfully", () => {
     expect(
@@ -21,7 +22,7 @@ test("Vault able to withdraw correct amount of Currency", () => {
     const v1 = new Vault()
     v1.deposit(new Ruble(9000))
     v1.withdraw(new Ruble(3400))
-    expect(Array.from(v1.store.values()).find(x => x.name === "Ruble").value).toBe(5600);
+    expect(Array.from(v1.store.values()).find(x => x.name === "Ruble").count).toBe(5600);
 })
 
 test("Vault throws error on uncorrect withdraw", () => {
@@ -40,7 +41,7 @@ test("Transfer between vaults going successfully", () => {
     v1.transfer(new Ruble(3000), v2)
 
     expect(v2.store.size).toBe(1);
-    expect(Array.from(v1.store.values()).find(x => x.name === "Ruble").value).toBe(3000);
+    expect(Array.from(v1.store.values()).find(x => x.name === "Ruble").count).toBe(3000);
 })
 
 test("Transfer with uncorrect amount of Currency throws error", () => {
