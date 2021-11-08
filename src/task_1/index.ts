@@ -7,8 +7,19 @@
  * Example new Currency("DOGE", 12.5, "satoshi")
  */
 
-export class Currency{
+export class Currency {
+    public name: string
+    public value: number
+    public unit: string
 
+    constructor(name: string, value: number, unit: string){
+        if (value < 0 || name === '' || name === undefined || value === undefined || unit === undefined) {
+            throw new Error('Некоректный ввод')
+        }
+        this.name = name
+        this.value = value
+        this.unit = unit
+    }
 }
 
 export enum CurrencyType {
