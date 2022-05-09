@@ -7,10 +7,26 @@
  * Example new Currency("DOGE", 12.5, "satoshi")
  */
 
-export class Currency{
+ export class Currency{
+    name: string;
+    value: number;
+    unit: string;
+    protected type: CurrencyType;
 
+    constructor(name: string, value: number, unit: string) {
+        if (!name || !unit || value < 0) {
+            throw new Error('Invalid args');
+        }
+        this.name = name;
+        this.value = value;
+        this.unit = unit;
+    }
 }
 
 export enum CurrencyType {
-
+    Dollar = 'Material',
+    Ruble = 'Material',
+    XRP = 'Crypt',
+    Etherium = 'Crypt',
+    Gold = 'Metal'
 }
